@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html ng-app='myApp'>
+<head> 
+    <meta charset="UTF-8">
+	<title>Bucket List</title>
+	<meta name="author" content="Amanda Fry ">
+	<link rel="stylesheet" type="text/css" href="./css/AmandaTemplate.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="angular.js"></script>
+    <script src="./js/angular.js"></script>
+    <script src="./js/angular-route.js"></script>
+    <script src="./js/angular-messages.js"></script>
+    <script src="./services/scripts.js"></script>
+    <script type="text/javascript">
+       // var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
+
+
+
+    </script>
+</head>
+
+<body>	
+    <div class="container">
+        <div class="header">
+            <h1><span>(MEAN) </span> Bucket List</h1>
+            <h3>Assigment - Exam</h3>
+            <div class="descr">
+                <p>Assigment description: User login and create list of items she/he wants to accomplish in her/his life time.</p>
+                <ul>
+                    <li>There are pages to login, dashboard, list of item accomlished or not.</li>
+                </ul>
+            </div>
+        </div><!-- end of header content-->
+        <div class="maincontent">
+    
+            <!-- This way I can bring in partials information -->
+            <div ng-view=''></div>
+
+        </div><!-- end of main content-->
+        <div class="footer">
+            <p>created by: Amanda Fry</p>
+            <a class="footerSpace" href="mailto:FeAmandaF@hotmail.com">FeAmandaF@hotmail.com</a>
+            <a href="https://www.linkedin.com/in/amandafry1">Amanda's LinkedIn profile</a>
+        </div><!-- end of footer -->
+      </div><!-- end of container -->
+</body>
+</html>
