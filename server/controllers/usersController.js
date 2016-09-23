@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Users = mongoose.model('Users');
-
-module.export = {
+console.log('controller in server loaded');
+module.exports = {
 
 	//brings back all the users from db
 	show: function(req, res){
@@ -20,26 +20,28 @@ module.export = {
 			if(err)
 				console.log(err);
 			else
-				res,json(data);
+				res.json(data);
 		});
 	},
 
 	//create a new user
 	create: function(req, res){
+		console.log('hit server controller create function');
 		//check to see if the user exists
 		Users.findOne({name: req.body.name}, function(err, data){
 			if(err)
 				console.log(err);
 			else{ 
 				if(data){
-					res.jason(data);
+					console.log('about to send back data to client/browser', data);
+					res.json(data);
 				}
 				//if the user does not exists create a new one
 				else{
-					var user = new Users(re.body)
+					var user = new Users(req.body)
 					user.save(function(err){
 						if(err)
-							conole.log(err);
+							console.log(err);
 						else{
 							Users.findOne({}, function(err,data){
 								if(err)
