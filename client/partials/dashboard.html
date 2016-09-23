@@ -1,7 +1,10 @@
 <!-- navigation -->
 <div>
+  <h4>
+  <a href="#/detail" style="margin-right: 30px">Bicket List</a>
   <a href="#/dashboard" style="margin-right: 30px">Home</a>
   <a href="#/">Logout</a>
+  </h4>
 </div><br>
 
 <h1>Welcome, {{currentUser.name}}!</h1>
@@ -12,6 +15,36 @@
 	<select ng-model="selectedName" ng-options="x for x in names" style="width: 20%"></select>
 	<input type="submit"  ng-click='newList()' value="Add to List">
 </form>
+</br>
+
+<H3>In my life time I want to:</H3>
+<div ng-controller="listAll">          
+    <table class="table table-striped" style="border:1px solid tan;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='blist in bucketLists'>
+            	<td><input type="checkbox" name=""></td>
+                <td>{{blist.name}}</td>
+                <td>{{blist.title}}</td>
+                <td>{{blist.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</br>
+
+<h3>List of other users (Click to view profile)</h3>
+<div ng-repeat="user in allUsers">
+	<p><a href="#/detail/<user.id>">{{user.name}}</a></p>
+</div>
+
 
 
 

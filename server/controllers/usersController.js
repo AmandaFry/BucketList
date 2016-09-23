@@ -1,5 +1,3 @@
-// SAMPLE CONTROLLER
-
 var mongoose = require('mongoose');
 var Users = mongoose.model('Users');
 

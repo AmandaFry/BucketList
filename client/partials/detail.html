@@ -1,8 +1,51 @@
 <!-- navigation -->
 <div>
+  <h4>
+  <a href="#/detail" style="margin-right: 30px">Bicket List</a>
   <a href="#/dashboard" style="margin-right: 30px">Home</a>
   <a href="#/">Logout</a>
+  </h4>
 </div><br>
 
-<h2>I am in the bucket list page</h2>
+<h1>{{currentUser.name}}'s Bucket List</h1>
+<div ng-controller="">
+	<h3>Done!</h3>      
+    <table class="table table-striped" style="border:1px solid tan;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='blist in bucketLists'>
+            	<td><input type="checkbox" name=""></td>
+                <td>{{blist.title}}</td>
+                <td>{{blist.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</br>
+
+<div ng-controller="">
+	<h3>Pending</h3>      
+    <table class="table table-striped" style="border:1px solid tan;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='blist in bucketLists'>
+            	<td><input type="checkbox" name=""></td>
+                <td>{{blist.title}}</td>
+                <td>{{blist.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
