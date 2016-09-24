@@ -14,6 +14,8 @@ module.exports = {
 		});
 	},
 
+
+
 	//brings back just one user from the db
 	showOne: function(req, res){
 		Users.findOne({_id:req.params.id}, function(err, data){
@@ -23,7 +25,6 @@ module.exports = {
 				res.json(data);
 		});
 	},
-
 	//create a new user
 	create: function(req, res){
 		console.log('hit server controller create function');
