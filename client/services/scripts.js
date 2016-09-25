@@ -1,6 +1,6 @@
-console.log('script loaded');
+console.log('Client, services, script loaded');
 var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
-var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
+
 
 //this is how to navigate between partials
 myApp.config(function ($routeProvider) {
@@ -27,10 +27,10 @@ myApp.factory('userFactory', function($http){
     console.log('Loaded factory');
 
 	factory.create = function(newUser,callback){
-        console.log('step2 now in factory create function');
-        console.log('step 3 right before ajax call to server');
+        console.log('create - step2 now in factory create function');
+        console.log('create - step 3 right before ajax call to server');
         $http.post('/users/create',newUser).success(function(data){
-            console.log('step4 after server comes back with response/data');
+            console.log('create - step4 after server comes back with response/data');
             factory.currentUser = data;
             callback();
         });
@@ -41,7 +41,9 @@ myApp.factory('userFactory', function($http){
     };
 
     factory.showAll = function(callback){
-        $http.post('/users/show').success(function(data){
+        $http.get('/users/show').success(function(data){
+            // callback(data);
+            console.log("i am in show all factory")
             callback(data);
         });
     };
@@ -63,7 +65,7 @@ myApp.controller('loginController', function($scope,$location,userFactory){
         if(!$scope.newUser)
             alert("Name cannot be blank")
         else{
-            console.log('step1 someone clicked login');
+            console.log('create - step1 someone clicked login');
             userFactory.create($scope.newUser,function(){
                 console.log('step 5 controller callback');
                 $location.url('/dashboard');
@@ -77,14 +79,16 @@ myApp.controller('dashboardController', function($scope,$location,userFactory){
 
     userFactory.showCurrentUser(function(data){
         $scope.currentUser = data;
-        console.log('I am in show Current', data)
+        // console.log('I am in show Current', data)
         if(!data.name)
             $location.url('/');
     });
 
     userFactory.showAll(function(data){
+        //here where I tied the partial allUsers
         $scope.allUsers = data;
-
+        console.log("I am in client, dashboardController inside showAll")
+        console.log(data)
     });
 
     $scope.logout = function(){

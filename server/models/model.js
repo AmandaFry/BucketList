@@ -19,7 +19,7 @@ var listSchema = new mongoose.Schema({
 	description: {type:String, required:true, minlength:10},
 	//I refer here the forign key (ID)in user table)
 	owner: {type: Schema.Types.ObjectId, ref: 'Users', required:true},
-	done: {type: Boolean },
+	done: {type: Boolean, defualt:false},
 	buddy: {type: Schema.Types.ObjectId, ref: 'Users'},
 },{timestamps:true});
 

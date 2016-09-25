@@ -43,9 +43,12 @@
 	</div>
 	</br>
 
-	<h3>List of other users (Click to view profile)</h3>
+	<h3>List of other users</h3>
+	<p>Click to view profile</p>
 	<div ng-repeat="user in allUsers">
-		<p><a href="#/detail/<user.id>">{{user._id}} - {{user.name}}</a></p>
+		<div ng-if="user.name != currentUser.name">
+			<p><a href="#/detail/<{{user._id}}>">{{user.name}} - {{user._id}}</a></p>
+		</div>
 	</div>
 </div>
 
