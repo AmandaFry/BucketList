@@ -26,6 +26,7 @@ module.exports = {
 				res.json(data);
 		});
 	},
+	
 	//create a new user
 	create: function(req, res){
 		// console.log('hit server controller create function');

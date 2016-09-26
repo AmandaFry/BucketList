@@ -1,7 +1,7 @@
 // require mongoose
 var mongoose = require('mongoose');
 
-
+//USER section
 //create the schema for user
 var userSchema = new mongoose.Schema({
 	//validation, the filed cannot be empty and at least 2 character long in string format
@@ -12,6 +12,7 @@ var userSchema = new mongoose.Schema({
 var Users = mongoose.model('Users', userSchema);
 
 
+//BUCKETLIST section
 var Schema = mongoose.Schema;
 
 var listSchema = new mongoose.Schema({
@@ -23,4 +24,5 @@ var listSchema = new mongoose.Schema({
 	buddy: {type: Schema.Types.ObjectId, ref: 'Users'},
 },{timestamps:true});
 
-var Lists = mongoose.model('List',listSchema)
+//Here where I create bucketLists table
+var bucketLists = mongoose.model('bucketList',listSchema)

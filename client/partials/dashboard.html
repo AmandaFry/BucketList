@@ -12,8 +12,8 @@
 		<h1>Welcome, {{currentUser.name}}!</h1>
 	</div>
 	<form class="form-inline">
-		<input class="form-control" type="text" name="title" ng-model="newList.titel" placeholder="Title" style="width: 25%">
-		<input class="form-control" type="text" name="description" ng-model="newList.description" placeholder="Description" style="width: 35%">
+		<input class="form-control" type="text" name="newtitle" ng-model="newList.titel" placeholder="Title" style="width: 25%">
+		<input class="form-control" type="text" name="newdescription" ng-model="newList.description" placeholder="Description" style="width: 35%">
 		<!-- <input class="form-control" type="text" name="name" ng-model="user.name" style="width: 20%"> -->
 		<select ng-model="selectedName" ng-options="x for x in names" style="width: 20%"></select>
 		<input type="submit"  ng-click='newList()' value="Add to List">
@@ -47,7 +47,7 @@
 	<p>Click to view profile</p>
 	<div ng-repeat="user in allUsers">
 		<div ng-if="user.name != currentUser.name">
-			<p><a href="#/detail/<{{user._id}}>">{{user.name}} - {{user._id}}</a></p>
+			<p><a href="#/detail/{{user._id}}">{{user.name}} - {{user._id}}</a></p>
 		</div>
 	</div>
 </div>

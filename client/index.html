@@ -12,13 +12,23 @@
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- angular library need to come in first-->
     <script src="./js/angular.js"></script>
     <script src="./js/angular-route.js"></script>
     <script src="./js/angular-messages.js"></script>
-    <script src="./services/scripts.js"></script>
+    <!-- my app file needs to be second "the brain"-->
+    <script src="app.js"></script>
+    <!-- supporting file -->
+    <script type="text/javascript" src='./controllers/login_controller.js'></script>
+    <script type="text/javascript" src='./controllers/dashboard_controller.js'></script>
+    <script type="text/javascript" src='./controllers/detail_controller.js'></script>
+    <script type="text/javascript" src='./factories/user_factory.js'></script>
+    <script type="text/javascript" src='./factories/bucketlist_factory.js'></script>
+
 </head>
 
 <body>	
+<!-- Loads Index first - path 1 -->
     <div class="container">
         <div class="header">
             <h1><span>(MEAN) </span> Bucket List</h1>

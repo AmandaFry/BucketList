@@ -1,6 +1,7 @@
 var users = require('../controllers/usersController.js');
-console.log("I am in server, config, routes. Brining in users see bellow:")
-console.dir(users);
+var bucketList = require('../controllers/bucketListController.js')
+// console.log("I am in server, config, routes. Brining in users see bellow:")
+// console.dir(users);
 
 module.exports = function(app){
 	console.log('I reached server - config - routes');
@@ -14,8 +15,9 @@ module.exports = function(app){
 		users.show(req,res);
 	});
 
+	//STEP 6 redirecting 
 	app.post('/users/create', function(req, res) {
-		console.log('I am in create route');
+		// console.log('I am in create route');
         users.create(req, res);
     });
 
@@ -23,4 +25,11 @@ module.exports = function(app){
 		users.showOne(req, res);
 	});
 
+	app.get('/bucketList/:id', function(req, res){
+     	bucketList.showOne(req, res);
+ 	});
+
+	app.post('/bucketList/create', function(req, res){
+     	bucketList.create(req, res);
+ 	});
 };
