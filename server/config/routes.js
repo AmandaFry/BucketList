@@ -4,14 +4,14 @@ var bucketList = require('../controllers/bucketListController.js')
 // console.dir(users);
 
 module.exports = function(app){
-	console.log('I reached server - config - routes');
+	// console.log('I reached server - config - routes');
 	//show the route is typed in and what contorrler to call, example call users.show in users.js
 	app.get('/users', function(req, res){
 		users.show(req,res);
 	});
 
 	app.get('/users/show', function(req, res){
-		console.log('I am in users/show route');
+		// console.log('I am in users/show route');
 		users.show(req,res);
 	});
 
@@ -31,5 +31,10 @@ module.exports = function(app){
 
 	app.post('/bucketList/create', function(req, res){
      	bucketList.create(req, res);
+ 	});
+
+ 	app.post('/bucketList/testCreate', function(req, res){
+ 		console.log('I am in server route');
+ 		bucketList.testCreate(req,res);
  	});
 };

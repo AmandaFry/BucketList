@@ -21,12 +21,6 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
     };
 
 
-    // $scope.showOne = function(poll){
-    //     pollFactory.showOne(poll,function(){
-    //         $location.url('/polls/'+poll._id);
-    //     });
-    // };
-
     $scope.logout = function(){
         userFactory.logout(function(data){
             $scope.currentUser = data;
@@ -34,6 +28,17 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
 
         })
     };
+
+    $scope.testCreate = function(){
+        //this is the data read in from the dashboard partial
+        console.log($scope.test)
+        //when I call the factory I need to pass in the $scope.test to it to pass it to the server
+        bucketListFactory.testCreate($scope.test, function(data){
+            console.log('I am in dashboardController - test create calling factory - client');
+            $scope.test = data;
+            $location.url('/dashboard')
+        })
+    }
 
 
 });

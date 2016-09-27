@@ -26,3 +26,11 @@ var listSchema = new mongoose.Schema({
 
 //Here where I create bucketLists table
 var bucketLists = mongoose.model('bucketList',listSchema)
+
+//Testing steps
+var testSchema = new mongoose.Schema({
+	name: {type:String, required:true},
+	optionalname: {type:String}
+},{timestamps:true});
+
+var Test = mongoose.model('test', testSchema)
