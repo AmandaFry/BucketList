@@ -29,8 +29,23 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
         })
     };
 
+
+    $scope.newList = function(user){
+        console.log(user)
+        //other side of the not able to work with hiden value, set the newl.owner ot user.name
+        $scope.newl.owner = user.name
+        console.log($scope.newl);
+         bucketListFactory.newList($scope.newl, function(data){
+            console.log('I am in dashboardController - newList calling factory - client');
+            $scope.bucketLists = data;
+            $location.url('/dashboard');
+         });
+    };
+
+
+//THIS is  sample code for me for a full circle of 
     $scope.testCreate = function(){
-        //this is the data read in from the dashboard partial
+        //this is the data read in from the dashboard partial, I called the ng-model test. ... 
         console.log($scope.test)
         //when I call the factory I need to pass in the $scope.test to it to pass it to the server
         bucketListFactory.testCreate($scope.test, function(data){
@@ -39,6 +54,6 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
             $location.url('/dashboard')
         })
     }
-
+//end of full circle
 
 });

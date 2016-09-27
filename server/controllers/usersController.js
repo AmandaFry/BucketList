@@ -12,8 +12,10 @@ module.exports = {
 				console.log(err);
 			//if no error then brings back all the data in a json format and put it in data
 			else
-				res.json(data);
+				res.json(data);	
 		});
+		//}).sort({name: -1});
+			// console.log(data);
 	},
 
 

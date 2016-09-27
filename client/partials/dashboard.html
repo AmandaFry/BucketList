@@ -12,14 +12,23 @@
 		<h1>Welcome, {{currentUser.name}}!</h1>
 	</div>
 	<form class="form-inline">
-		<input class="form-control" type="text" name="newtitle" ng-model="newList.titel" placeholder="Title" style="width: 25%">
-		<input class="form-control" type="text" name="newdescription" ng-model="newList.description" placeholder="Description" style="width: 35%">
-		<!-- <input class="form-control" type="text" name="name" ng-model="user.name" style="width: 20%"> -->
-		<select ng-model="selectedName" ng-options="x for x in names" default='select' style="width: 20%"></select>
-		<input type="submit"  ng-click='newList()' value="Add to List">
+		<!-- <input type="hidden" ng-model="newl.owner" ng-value="currentUser.name"> -->
+		<!-- <input type="hidden" ng-model="newl.owner" value="232323223323"> -->
+		<input class="form-control" type="text" ng-model="newl.title" placeholder="Title" style="width: 25%">
+		<input class="form-control" type="text" ng-model="newl.description" placeholder="Description" style="width: 35%">
+		
+			<select ng-model='newl.buddy'>
+				<!-- <option>Select a buddy</option> -->
+				<div ng-if="user.name != currentUser.name">
+					<option ng-repeat="user in allUsers">{{user.name}}</option>
+				</div>
+			</select>
+		<!-- I was not able to make hidden value work so I passed on currentUser to the newList() -->
+		<input type="submit"  ng-click='newList(currentUser)' value="Add to List">
 	</form>
 	</br>
 
+<!--  This was a helper for me to understand -->
 	<p>This is not part of the feature only testing a complete loop</p>
 	<form class="form-inline"> 
 		<input class="form-control" type="text" name="testName" ng-model="test.name" placeholder="enter a name" style="width: 25%">
@@ -28,6 +37,7 @@
 		<p>New entry in the db happened, the id is: {{test._id}}</p>
 	</form>
 	</br>
+<!-- end of test -->
 
 	<H3>In my life time I want to:</H3>
 	<div>          
@@ -54,8 +64,8 @@
 
 	<h3>List of other users</h3>
 	<p>Click to view profile</p>
-	<div ng-repeat="user in allUsers">
-		<div ng-if="user.name != currentUser.name">
+	<div ng-repeat="user in allUsers | orderBy: 'name'" >
+		<div ng-if="user.name != currentUser.name ">
 			<p><a href="#/detail/{{user._id}}">{{user.name}} - {{user._id}}</a></p>
 		</div>
 	</div>

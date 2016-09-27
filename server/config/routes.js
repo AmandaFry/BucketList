@@ -33,6 +33,13 @@ module.exports = function(app){
      	bucketList.create(req, res);
  	});
 
+ 	app.post('/bucketlist/newList', function(req,res){
+ 		console.log('I am at the route for newl', req.body);
+ 		bucketList.newListCreate(req, res);
+ 	});
+
+
+//this is test full circle 
  	app.post('/bucketList/testCreate', function(req, res){
  		console.log('I am in server route');
  		bucketList.testCreate(req,res);
