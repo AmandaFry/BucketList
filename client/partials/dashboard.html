@@ -17,10 +17,12 @@
 		<input class="form-control" type="text" ng-model="newl.title" placeholder="Title" style="width: 25%">
 		<input class="form-control" type="text" ng-model="newl.description" placeholder="Description" style="width: 35%">
 		
-			<select ng-model='newl.buddy'>
+			<select ng-model='newl.buddyl'>
 				<!-- <option>Select a buddy</option> -->
+				<!-- the if does not work, try filter -->
 				<div ng-if="user.name != currentUser.name">
-					<option ng-repeat="user in allUsers">{{user.name}}</option>
+					<!-- <option ng-repeat="user in allUsers" value="user._id">{{user.name}}</option> -->
+					<option ng-repeat="user in allUsers" >{{user.name}}</option>
 				</div>
 			</select>
 		<!-- I was not able to make hidden value work so I passed on currentUser to the newList() -->
@@ -44,18 +46,21 @@
 	    <table class="table table-striped" style="border:1px solid tan;">
 	        <thead>
 	            <tr>
-	                <th></th>
+	                <th>Completed</th>
 	                <th>Name</th>
 	                <th>Title</th>
+	                <th>Description</th>
 	                <th>Created</th>
 	            </tr>
 	        </thead>
 	        <tbody>
-	            <tr ng-repeat='blist in bucketLists'>
-	            	<td><input type="checkbox" name=""></td>
-	                <!-- <td>{{blist.name}}</td> -->
-	                <!-- <td>{{blist.title}}</td> -->
-	                <!-- <td>{{blist.date}}</td> -->
+	        	 <!-- <td ng-if='bucketLists'>'blist in bucketLists'></td> -->
+	        	<tr  ng-repeat= 'blist in allblist'>
+	                <td><input type="checkbox" ng-click='blistDone()'></td>
+	                <td>{{blist.ownerl}}</td>
+	                <td>{{blist.title}}</td>
+	                <td>{{blist.description}}</td>
+	                <td>{{blist.createdAt}}</td>
 	            </tr>
 	        </tbody>
 	    </table>

@@ -22,8 +22,7 @@ myApp.factory('userFactory', function($http){
 
     factory.showAll = function(callback){
         $http.get('/users/show').success(function(data){
-            // callback(data);
-            // console.log("i am in show all factory")
+              // console.log("i am in show all factory")
             callback(data);
         });
     };

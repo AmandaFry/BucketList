@@ -1,5 +1,6 @@
 myApp.controller('dashboardController', function($scope,$location,userFactory,bucketListFactory){
-
+    //USER SECTION
+    //brings back the current user as the page load
     userFactory.showCurrentUser(function(data){
         $scope.currentUser = data;
         // console.log('I am in show Current', data)
@@ -7,11 +8,12 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
             $location.url('/');
     });
 
+    //brings back all the users at page load
     userFactory.showAll(function(data){
         //here where I tied the partial allUsers
         $scope.allUsers = data;
-        console.log("I am in client, dashboardController inside showAll")
-        console.log(data)
+        // console.log("I am in client, dashboardController inside showAll")
+        // console.log(data)
     });
 
     $scope.showOne = function(user){
@@ -29,21 +31,33 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
         })
     };
 
+    //Brings back all the bucket list at page load
+    bucketListFactory.showAll(function(data){
+        console.log('I bringing in all the bucketlist')
+        $scope.allblist = data;
+        // console.log('I bringing in all the bucketlist')
+        console.log(data);
+    })
 
-    $scope.newList = function(user){
-        console.log(user)
-        //other side of the not able to work with hiden value, set the newl.owner ot user.name
-        $scope.newl.owner = user.name
-        console.log($scope.newl);
-         bucketListFactory.newList($scope.newl, function(data){
-            console.log('I am in dashboardController - newList calling factory - client');
-            $scope.bucketLists = data;
-            $location.url('/dashboard');
-         });
-    };
+        //adding a new bucketlist
+        $scope.newList = function(user){
+            console.log(user)
+            //other side of the not able to work with hiden value, set the newl.owner to user.name
+            $scope.newl.ownerl = user.name;
+            // $scope.newl.ownerl = user._id;
+            // $scope.newl.buddyl = user._id;
+            $scope.newl.done = false;
+            console.log($scope.newl);
+             bucketListFactory.newList($scope.newl, function(data){
+                console.log('I am in dashboardController - newList calling factory - client');
+                console.log('should called the showall')
+                $scope.allblist.push(data)
+                $location.url('/dashboard');
+             });
+        };
 
 
-//THIS is  sample code for me for a full circle of 
+//THIS is sample code for me for a full circle of 
     $scope.testCreate = function(){
         //this is the data read in from the dashboard partial, I called the ng-model test. ... 
         console.log($scope.test)

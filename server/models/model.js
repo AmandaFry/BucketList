@@ -18,10 +18,12 @@ var Schema = mongoose.Schema;
 var listSchema = new mongoose.Schema({
 	title: {type:String, required:true, minlength:5},
 	description: {type:String, required:true, minlength:10},
-	//I refer here the forign key (ID)in user table)
-	owner: {type: Schema.Types.ObjectId, ref: 'Users', required:true},
+	//I refer here the forign key (ID) in user table)
+	// owner: {type: Schema.Types.ObjectId, ref: 'Users', required:true},
+	ownerl:{type:String, required:true},
+	// buddy: {type: Schema.Types.ObjectId, ref: 'Users'},
+	buddyl: {type:String},
 	done: {type: Boolean, defualt:false},
-	buddy: {type: Schema.Types.ObjectId, ref: 'Users'},
 },{timestamps:true});
 
 //Here where I create bucketLists table

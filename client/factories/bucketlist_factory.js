@@ -3,18 +3,25 @@ myApp.factory('bucketListFactory', function($http){
 
     
     factory.showOne = function(user, callback){
-        console.log('am in in listFacory showOne')
+        // console.log('am in in listFacory showOne')
         $http.get('/detail/'+user._id).success(function(data){
             factory.bucketList = data;
             callback();
         });
     };
 
+    factory.showAll = function(callback){
+        $http.get('/bucketlists/showAll').success(function(data){
+            console.log("client, factory, show all bucketlist")
+            callback(data);
+        });
+    };
+
     factory.newList = function(newlData, callback){
-        console.log("I am inside newList factory");
-        console.log("Data passed on is", newlData);
+        // console.log("I am inside newList factory");
+        // console.log("Data passed on is", newlData);
         $http.post('/bucketlist/newList', newlData).success(function(fromServerdata){
-            console.log('data from server', fromServerdata);
+            // console.log('data from server', fromServerdata);
             callback(fromServerdata);
         });
     };

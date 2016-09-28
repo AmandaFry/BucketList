@@ -25,17 +25,29 @@ module.exports = function(app){
 		users.showOne(req, res);
 	});
 
-	app.get('/bucketList/:id', function(req, res){
-     	bucketList.showOne(req, res);
+
+	// app.post('/bucketList/create', function(req, res){
+ //     	bucketList.create(req, res);
+ // 	});
+
+  	app.post('/bucketlist/newList', function(req,res){
+ 		console.log('I am at the route for newl', req.body);
+ 		bucketList.newListCreate(req, res);
  	});
 
-	app.post('/bucketList/create', function(req, res){
-     	bucketList.create(req, res);
- 	});
+ 	app.get('/bucketlists/showAll', function(req,res){
+ 		console.log("server, route, show all bucketlist")
+ 		bucketList.showAll(req,res)
+ 	})
 
  	app.post('/bucketlist/newList', function(req,res){
  		console.log('I am at the route for newl', req.body);
  		bucketList.newListCreate(req, res);
+ 	});
+
+//moved this one to last one as it casued problem with other routse
+ 	app.get('/bucketList/:id', function(req, res){
+     	bucketList.showOne(req, res);
  	});
 
 
