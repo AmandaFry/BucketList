@@ -31,30 +31,56 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
         })
     };
 
+    // //Brings back all the bucket list at page load
+    // bucketListFactory.showAll(function(data){
+    //     console.log('I bringing in all the bucketlist')
+    //     $scope.allblist = data;
+    //     // console.log('I bringing in all the bucketlist')
+    //     console.log(data);
+    // })
+
+    //     //adding a new bucketlist
+    //     $scope.newList = function(user){
+    //         console.log(user)
+    //         //other side of the not able to work with hiden value, set the newl.owner to user.name
+    //         $scope.newl.ownerl = user.name;
+    //         // $scope.newl.ownerl = user._id;
+    //         // $scope.newl.buddyl = user._id;
+    //         $scope.newl.done = false;
+    //         console.log($scope.newl);
+    //          bucketListFactory.newList($scope.newl, function(data){
+    //             console.log('I am in dashboardController - newList calling factory - client');
+    //             console.log('should called the showall')
+    //             $scope.allblist.push(data)
+    //             $location.url('/dashboard');
+    //          });
+    //     };
+
+
     //Brings back all the bucket list at page load
     bucketListFactory.showAll(function(data){
         console.log('I bringing in all the bucketlist')
         $scope.allblist = data;
         // console.log('I bringing in all the bucketlist')
         console.log(data);
-    })
+            //adding a new bucketlist
+            $scope.newList = function(user){
+                console.log(user)
+                //other side of the not able to work with hiden value, set the newl.owner to user.name
+                $scope.newl.ownerl = user.name;
+                // $scope.newl.ownerl = user._id;
+                // $scope.newl.buddyl = user._id;
+                $scope.newl.done = false;
+                console.log($scope.newl);
+                 bucketListFactory.newList($scope.newl, function(data){
+                    console.log('I am in dashboardController - newList calling factory - client');
+                    console.log('should called the showall')
+                    $scope.allblist.push(data)
+                    $location.url('/dashboard');
+                 });
+            };
+         })
 
-        //adding a new bucketlist
-        $scope.newList = function(user){
-            console.log(user)
-            //other side of the not able to work with hiden value, set the newl.owner to user.name
-            $scope.newl.ownerl = user.name;
-            // $scope.newl.ownerl = user._id;
-            // $scope.newl.buddyl = user._id;
-            $scope.newl.done = false;
-            console.log($scope.newl);
-             bucketListFactory.newList($scope.newl, function(data){
-                console.log('I am in dashboardController - newList calling factory - client');
-                console.log('should called the showall')
-                $scope.allblist.push(data)
-                $location.url('/dashboard');
-             });
-        };
 
 
 //THIS is sample code for me for a full circle of 
