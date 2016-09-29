@@ -81,6 +81,11 @@ myApp.controller('dashboardController', function($scope,$location,userFactory,bu
             };
          })
 
+        $scope.blistDone = function(blist,currUser){
+            console.log(blist, currUser)
+            if(blist.ownerl == currUser || blist.buddyl ==currUser)
+                console.log('you can update')
+        }
 
 
 //THIS is sample code for me for a full circle of 

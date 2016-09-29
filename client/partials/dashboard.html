@@ -55,9 +55,20 @@
 	        </thead>
 	        <tbody>
 	        	 <!-- <td ng-if='bucketLists'>'blist in bucketLists'></td> -->
-	        	<tr  ng-repeat= 'blist in allblist'>
-	                <td><input type="checkbox" ng-click='blistDone()'></td>
-	                <td>{{blist.ownerl}}</td>
+	        	<tr ng-repeat= 'blist in allblist'>
+	        		<td ng-if="blist.ownerl != currentUser.name && blist.done == false">
+		            	<input type="checkbox" disabled>
+		            </td>
+		            <td ng-if="blist.ownerl != currentUser.name && blist.done == true">
+		            	<input type="checkbox" disabled checked>
+		            </td>
+	               	<td ng-if="blist.ownerl == currentUser.name && blist.done == false">
+		            	<input type="checkbox" ng-click='blistDone(blist)'>
+		            </td>
+		            <td ng-if="blist.ownerl == currentUser.name && blist.done == true">
+		            	<input type="checkbox" checked ng-click='blistDone(blist)'>
+		            </td>
+		            <td>{{blist.ownerl}}</td>
 	                <td>{{blist.title}}</td>
 	                <td>{{blist.description}}</td>
 	                <td>{{blist.createdAt}}</td>
