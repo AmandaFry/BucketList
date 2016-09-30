@@ -56,22 +56,26 @@
 	        <tbody>
 	        	 <!-- <td ng-if='bucketLists'>'blist in bucketLists'></td> -->
 	        	<tr ng-repeat= 'blist in allblist'>
-	        		<td ng-if="blist.ownerl != currentUser.name && blist.done == false">
+<!-- 	        		<td ng-if="(blist.ownerl != currentUser.name && blist.buddyl != currentUser.name) && blist.done == false">
 		            	<input type="checkbox" disabled>
 		            </td>
-		            <td ng-if="blist.ownerl != currentUser.name && blist.done == true">
+		            <td ng-if="(blist.ownerl != currentUser.name && blist.buddyl != currentUser.name) && blist.done == true">
 		            	<input type="checkbox" disabled checked>
 		            </td>
-	               	<td ng-if="blist.ownerl == currentUser.name && blist.done == false">
+	               	<td ng-if="(blist.ownerl == currentUser.name || blist.buddyl == currentUser.name) && blist.done == false">
 		            	<input type="checkbox" ng-click='blistDone(blist)'>
 		            </td>
-		            <td ng-if="blist.ownerl == currentUser.name && blist.done == true">
+		            <td ng-if="(blist.ownerl == currentUser.name || blist.buddyl == currentUser.name) && blist.done == true">
 		            	<input type="checkbox" checked ng-click='blistDone(blist)'>
-		            </td>
+		            </td> -->
+		            <!-- replaced the code above with a code bellow -->
+		            <td>
+						<input type="checkbox" ng-checked="blist.done" ng-disabled="blist.ownerl != currentUser.name && blist.buddyl != currentUser.name" ng-click='blistDone(blist)'/>
+					</td>
 		            <td>{{blist.ownerl}}</td>
 	                <td>{{blist.title}}</td>
 	                <td>{{blist.description}}</td>
-	                <td>{{blist.createdAt}}</td>
+	                <td>{{blist.createdAt | date : MMM.d.yyyy.hh.mm}}</td>
 	            </tr>
 	        </tbody>
 	    </table>
@@ -82,7 +86,8 @@
 	<p>Click to view profile</p>
 	<div ng-repeat="user in allUsers | orderBy: 'name'" >
 		<div ng-if="user.name != currentUser.name ">
-			<p><a href="#/detail/{{user._id}}">{{user.name}} - {{user._id}}</a></p>
+			<!-- <p><a href="#/detail/{{user._id}}">{{user.name}} - {{user._id}}</a></p> -->
+			<a href="#/detail/{{user._id}}" ng-click='newList(user, currentUser)'>{{user.name}} - {{user._id}}</a></p>
 		</div>
 	</div>
 </div>

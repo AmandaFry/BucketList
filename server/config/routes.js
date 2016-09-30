@@ -31,20 +31,24 @@ module.exports = function(app){
  // 	});
 
   	app.post('/bucketlist/newList', function(req,res){
- 		console.log('I am at the route for newl', req.body);
+ 		// console.log('I am at the route for newl', req.body);
  		bucketList.newListCreate(req, res);
  	});
 
  	app.get('/bucketlists/showAll', function(req,res){
- 		console.log("server, route, show all bucketlist")
+ 		// console.log("server, route, show all bucketlist")
  		bucketList.showAll(req,res)
  	})
 
  	app.post('/bucketlist/newList', function(req,res){
- 		console.log('I am at the route for newl', req.body);
+ 		// console.log('I am at the route for newl', req.body);
  		bucketList.newListCreate(req, res);
  	});
 
+ 	app.post('/bucketlist/blistDone', function(req,res){
+ 		// console.log('I am at the route for blistDone', req.body);
+ 		bucketList.blistDone(req, res);
+ 	});
 //moved this one to last one as it casued problem with other routse
  	app.get('/bucketList/:id', function(req, res){
      	bucketList.showOne(req, res);
@@ -53,7 +57,7 @@ module.exports = function(app){
 
 //this is test full circle 
  	app.post('/bucketList/testCreate', function(req, res){
- 		console.log('I am in server route');
+ 		// console.log('I am in server route');
  		bucketList.testCreate(req,res);
  	});
 };

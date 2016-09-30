@@ -12,7 +12,7 @@ myApp.factory('bucketListFactory', function($http){
 
     factory.showAll = function(callback){
         $http.get('/bucketlists/showAll').success(function(data){
-            console.log("client, factory, show all bucketlist")
+            // console.log("client, factory, show all bucketlist")
             callback(data);
         });
     };
@@ -26,10 +26,15 @@ myApp.factory('bucketListFactory', function($http){
         });
     };
 
+    factory.blistDone = function(blist){
+        console.log('in factory', blist);
+        $http.post('/bucketlist/blistDone', blist)
+    }
+
 //This is sample full circle 
     factory.testCreate = function(testData, callback){
         //testData is what was passed from controller as $scope.test
-        console.log("I am inside test create factory, client");
+        // console.log("I am inside test create factory, client");
         console.log('Data I am passing on,', testData);
         //this path has to match the server\config\
         $http.post('/bucketlist/testCreate', testData).success(function(fromServerdata){

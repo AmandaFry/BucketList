@@ -1,5 +1,5 @@
 //right after Index - step 2
-console.log('Client, services, script loaded');
+// console.log('Client, services, script loaded');
 var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']); //this is global now
 
 
